@@ -1,0 +1,42 @@
+In hyperterminal of laptop connected to Switch 1
+
+Switch>en
+Switch#config t
+Enter configuration commands, one per line.  End with CNTL/Z.
+Switch(config)#hostname sw1
+sw1(config)#enable password 1234
+sw1(config)#
+sw1(config)#
+sw1(config)#vlan 10
+sw1(config-vlan)#name ofiicer
+sw1(config-vlan)#exit
+sw1(config)#vlan 20
+sw1(config-vlan)#name clerical
+sw1(config-vlan)#exit
+sw1(config)#int fa0/1
+sw1(config-if)#switchport mode access
+sw1(config-if)#switchport access vlan 10
+sw1(config-if)#exit
+sw1(config)#int fa1/1
+sw1(config-if)#switchport mode access
+sw1(config-if)#switchport access vlan 20
+sw1(config-if)#exit
+sw1(config)#int fa2/1
+sw1(config-if)#switchport mode trunk
+
+sw1(config-if)#
+%LINEPROTO-5-UPDOWN: Line protocol on Interface FastEthernet2/1, changed state to down
+
+%LINEPROTO-5-UPDOWN: Line protocol on Interface FastEthernet2/1, changed state to up
+switchport mode trunk
+sw1(config-if)#switchport mode trunk
+sw1(config-if)#switchport trunk allowed vlan all
+sw1(config-if)#exit
+sw1(config)#exit
+sw1#
+%SYS-5-CONFIG_I: Configured from console by console
+wr
+Building configuration...
+[OK]
+sw1#
+sw1#
